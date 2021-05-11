@@ -6,7 +6,9 @@
     <h2>{{ album.title }} by {{ album.artist.name }}</h2>
     {% for track in tracks %}
         <p><strong>{{ track.name }}</strong></p>
-        <p>Composer(s) : {{ track.composer }}</p>
+        <p>Composer(s): {{ track.composer }}</p>
+        <p>Duration: {{ track.ms_to_duration }} ({{ track.milliseconds }} ms)</p>
+        <p>Price: {{ track.unitPrice }} bitcoins</p>
     {% empty %}
         <i>No track.</i>
     {% endfor %}

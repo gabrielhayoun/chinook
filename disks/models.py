@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 
@@ -13,6 +15,13 @@ class Track(models.Model):
     bytes = models.IntegerField()
     unitPrice = models.FloatField()
     album = models.ForeignKey('Album', on_delete=models.CASCADE)
+
+    # FIXME: can it be done just once after the ORM has created the object?
+    def ms_to_duration(self):
+        minutes = self.milliseconds / 60000
+        seconds = (self.milliseconds % 60000) / 1000
+        millis = self.milliseconds % 1000
+        return f'%02d:%02d.%03d' % (minutes, seconds, millis)
 
 
 class Album(models.Model):
