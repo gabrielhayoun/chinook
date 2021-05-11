@@ -20,8 +20,8 @@ class Track(models.Model):
     def ms_to_duration(self):
         minutes = self.milliseconds / 60000
         seconds = (self.milliseconds % 60000) / 1000
-        millis = self.milliseconds % 1000
-        return f'%02d:%02d.%03d' % (minutes, seconds, millis)
+        #millis = self.milliseconds % 1000
+        return f'%d:%02d' % (minutes, seconds)
 
 
 class Album(models.Model):
