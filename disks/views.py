@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 
 from .forms import SearchForm
@@ -12,7 +13,10 @@ def album_list(request):
 
     if form.is_valid():
         query = form.cleaned_data['query']
-        albums = Album.objects.filter(title__icontains=query) #, artist__name__icontains=query)
+        albums = Album.objects.filter(
+            Q(title__icontains=query) |
+            Q(artist__name__icontains=query)
+        )
     else:
         albums = get_list_or_404(Album)
     return render(request, 'disks/album_list.html', locals())
