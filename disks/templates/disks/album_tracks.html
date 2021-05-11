@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ album.title }} by {{ album.artist.name }}
+{% endblock %}
+{% block content %}
+    <h2>{{ album.title }} by {{ album.artist.name }}</h2>
+    {% for track in tracks %}
+        <p><strong>{{ track.name }}</strong></p>
+        <p>Composer(s) : {{ track.composer }}</p>
+    {% empty %}
+        <i>No track.</i>
+    {% endfor %}
+    <p></p>
+    <a href="{% url 'album_list' %}"><em>Return to album list</em></a>
+{% endblock %}

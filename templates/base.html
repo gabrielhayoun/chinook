@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<header><h1>Chinook Assignment</h1></header>
+{% block content %}{% endblock %}
+<footer><em>&copy; ISAE-SUPAERO</em></footer>
+</body>
+</html>
