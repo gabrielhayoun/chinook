@@ -4,6 +4,11 @@
 {% endblock %}
 {% block content %}
     <h2>Album list</h2>
+    <form method="POST" action="{% url 'album_list' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit"/>
+    </form>
     {% for album in albums %}
         <p><a href="{% url 'album_tracks' album.id %}">{{ album.title }}</a> by {{ album.artist.name }}</p>
     {% empty %}
