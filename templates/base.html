@@ -3,12 +3,28 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<title>{% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<header><h1>Chinook Assignment</h1></header>
-{% block content %}{% endblock %}
-<footer><em>&copy; ISAE-SUPAERO</em></footer>
+<div class="container">
+    <div class="row pb-3">
+        <header><h1>Chinook Assignment</h1></header>
+    </div>
+    {% block content %}{% endblock %}
+    <div class="row pt-5">
+        <footer><em>&copy; ISAE-SUPAERO</em></footer>
+    </div>
+</div>
 </body>
 </html>

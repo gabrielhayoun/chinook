@@ -3,15 +3,35 @@
     {{ album.title }} by {{ album.artist.name }}
 {% endblock %}
 {% block content %}
-    <h2>{{ album.title }} by {{ album.artist.name }}</h2>
-    {% for track in tracks %}
-        <p><strong>{{ track.name }}</strong></p>
-        <p>Composer(s): {{ track.composer }}</p>
-        <p>Duration: {{ track.ms_to_duration }} ({{ track.milliseconds }} ms)</p>
-        <p>Price: {{ track.unitPrice }} bitcoins</p>
-    {% empty %}
-        <i>No track.</i>
-    {% endfor %}
-    <p></p>
-    <a href="{% url 'album_list' %}"><em>Return to album list</em></a>
+    <div class="row pb-3">
+        <h2>{{ album.title }} <small>by {{ album.artist.name }}</small></h2>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Track name</th>
+                <th>Composer(s)</th>
+                <th>Duration</th>
+                <th>Unit Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for track in tracks %}
+                <tr>
+                    <td>{{ track.name }}</td>
+                    <td>{{ track.composer }}</td>
+                    <td>{{ track.ms_to_duration }}</td>
+                    <td>{{ track.unitPrice }} &#8383;</td>
+                    {# Bitcoins HTML symbol #}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row pt-3">
+        <a class="btn btn-primary" href="{% url 'album_list' %}"><span class="far fa-home"></span>&ensp;Back to album list</a>
+    </div>
 {% endblock %}

@@ -3,15 +3,37 @@
     Album list
 {% endblock %}
 {% block content %}
-    <h2>Album list</h2>
-    <form method="POST" action="{% url 'album_list' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit"/>
-    </form>
-    {% for album in albums %}
-        <p><a href="{% url 'album_tracks' album.id %}">{{ album.title }}</a> by {{ album.artist.name }}</p>
-    {% empty %}
-        <i>No album.</i>
-    {% endfor %}
+    <div class="row pb-3">
+        <h2>Album list</h2>
+    </div>
+
+    <div class="row float-right pb-3">
+        <form class="form-inline" method="POST" action="{% url 'album_list' %}">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn btn-primary" type="submit" value="Submit"/>
+        </form>
+    </div>
+    <div class="row">
+        {% if albums %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for album in albums %}
+                    <tr>
+                        <td><a href="{% url 'album_tracks' album.id %}">{{ album.title }}</a></td>
+                        <td>{{ album.artist.name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="jumbotron"><i>No album.</i></div>
+        {% endif %}
+    </div>
 {% endblock %}
