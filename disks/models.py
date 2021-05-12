@@ -23,6 +23,9 @@ class Track(models.Model):
         #millis = self.milliseconds % 1000
         return f'%d:%02d' % (minutes, seconds)
 
+    def __str__(self):
+        return f'{self.name}, on {self.album}'
+
 
 class Album(models.Model):
     """
@@ -31,9 +34,15 @@ class Album(models.Model):
     title = models.CharField(max_length=200)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.title}, by {self.artist}'
+
 
 class Artist(models.Model):
     """
     An artist, that may have many albums
     """
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
