@@ -1,7 +1,7 @@
 from django.db.models import Q
-from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.shortcuts import redirect, render, get_list_or_404, get_object_or_404
 
-from .forms import SearchForm
+from .forms import SearchForm, AlbumForm
 from .models import Album
 
 
@@ -31,3 +31,15 @@ def album_tracks(request, album_id):
     album = get_object_or_404(Album, pk=album_id)
     tracks = album.track_set.all()
     return render(request, 'disks/album_tracks.html', locals())
+
+
+def album_creation(request):
+    """
+    Display a form to collect data and create new album
+    """
+    form = AlbumForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('album_list')
+    else:
+        return render(request, 'disks/album_creation.html', locals())

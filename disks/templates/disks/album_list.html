@@ -7,13 +7,23 @@
         <h2>Album list</h2>
     </div>
 
-    <div class="row float-right pb-3">
-        <form class="form-inline" method="POST" action="{% url 'album_list' %}">
-            {% csrf_token %}
-            {{ form }}
-            <input class="btn btn-primary" type="submit" value="Submit"/>
-        </form>
+    <div class="clearfix">
+        <div class="float-right pb-3">
+            <form class="form-inline" method="POST" action="{% url 'album_list' %}">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+            </form>
+        </div>
     </div>
+
+    <div class="clearfix">
+        <div class="float-right pb-3">
+            <a class="btn btn-secondary" href="{% url 'album_creation' %}"><span class="far fa-plus"></span>&ensp;Add new
+                album</a>
+        </div>
+    </div>
+
     <div class="row">
         {% if albums %}
             <table class="table table-striped">
