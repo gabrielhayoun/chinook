@@ -24,7 +24,7 @@ class Track(models.Model):
         return f'%d:%02d' % (minutes, seconds)
 
     def __str__(self):
-        return f'{self.name}, on {self.album}'
+        return self.name
 
 
 class Album(models.Model):
@@ -35,7 +35,7 @@ class Album(models.Model):
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.title}, by {self.artist}'
+        return self.title
 
 
 class Artist(models.Model):
