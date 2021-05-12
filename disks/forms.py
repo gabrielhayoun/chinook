@@ -1,5 +1,5 @@
 from django import forms
-from .models import Album
+from .models import Album, Artist
 
 class SearchForm(forms.Form):
     """
@@ -15,3 +15,16 @@ class AlbumForm(forms.ModelForm):
     class Meta:
         model = Album
         fields = '__all__'
+
+    def clean(self):
+        """
+        Validates a new album only if it's not a duplicate
+        """
+        cleaned_data = super(AlbumForm, self).clean()
+        title = cleaned_data['title']
+        artist = cleaned_data['artist']
+
+        duplicate = Album.objects.filter(title=title).filter(artist=artist)
+        if duplicate.exists():
+            raise forms.ValidationError('Album with same title and artist already in database')
+        return cleaned_data
