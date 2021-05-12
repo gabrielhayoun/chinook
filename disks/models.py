@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 
 
-# TODO: define verbose_name, Meta with order, and __str__ functions
+# TODO: define verbose_name, Meta with order
 
 class Track(models.Model):
     """
