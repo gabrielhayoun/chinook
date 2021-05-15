@@ -3,12 +3,12 @@
     {{ album.title }} by {{ album.artist.name }}
 {% endblock %}
 {% block content %}
-    <div class="row pb-3">
+    <div class="block">
         <h2>{{ album.title }} <small>by {{ album.artist.name }}</small></h2>
     </div>
 
-    <div class="row">
-        <table class="table table-striped">
+    <div class="block">
+        <table class="table is-striped">
             <thead>
             <tr>
                 <th>Track name</th>
@@ -31,7 +31,7 @@
         </table>
     </div>
 
-    <div class="row pt-3">
-        <a class="btn btn-primary" href="{% url 'album_list' %}"><span class="far fa-home"></span>&ensp;Back to album list</a>
+    <div class="block">
+        <a class="button is-link" href="{% url 'album_list' %}"><span class="far fa-home"></span>&ensp;Back to album list</a>
     </div>
 {% endblock %}

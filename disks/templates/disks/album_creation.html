@@ -3,16 +3,16 @@
     Create new album
 {% endblock %}
 {% block content %}
-    <div class="row pb-3">
+    <div class="block">
         <h2>Create new album</h2>
     </div>
 
-    <div class="row float-right pb-3">
-        <form class="form" method="POST" action="{% url 'album_creation' %}">
+    <div class="block">
+        <form method="POST" action="{% url 'album_creation' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <input class="btn btn-primary" type="submit" value="Submit"/>
-            <button onclick="window.history.back();" class="btn btn-secondary" type="button">Cancel</button>
+            <input class="button is-primary" type="submit" value="Submit"/>
+            <button onclick="window.history.back();" class="button is-primary is-light" type="button">Cancel</button>
         </form>
     </div>
 {% endblock %}
